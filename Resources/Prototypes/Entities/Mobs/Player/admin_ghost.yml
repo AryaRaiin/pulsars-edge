@@ -73,6 +73,7 @@
     - BypassInteractionRangeChecks
     - BypassDropChecks
     - NoConsoleSound
+    - SilentStorageUser
     - PreventAccessLogging
     - AllowBiomeLoading
   - type: Input
@@ -81,8 +82,17 @@
     canInteract: true
   - type: GhostHearing
   - type: Hands
+    hands:
+      hand_right:
+        location: Right
+      hand_left:
+        location: Left
+    sortedHands:
+    - hand_right
+    - hand_left
   - type: ComplexInteraction
   - type: Puller
+    needsHands: false
   - type: CombatMode
  # - type: Stealth # Mono - Stealth B Gone
  #   maxVisibility: -1.5
@@ -114,6 +124,8 @@
         type: CrewMonitoringBoundUserInterface
       enum.GeneralStationRecordConsoleKey.Key:
         type: GeneralStationRecordConsoleBoundUserInterface
+      enum.CharacterRecordConsoleKey.Key:
+        type: CharacterRecordConsoleBoundUserInterface
   - type: IntrinsicUI
     uis:
       enum.SolarControlConsoleUiKey.Key:
@@ -128,6 +140,8 @@
         toggleAction: ActionAGhostShowCrewMonitoring
       enum.GeneralStationRecordConsoleKey.Key:
         toggleAction: ActionAGhostShowStationRecords
+      enum.CharacterRecordConsoleKey.Key:
+        toggleAction: ActionAGhostShowCharacterRecords
   - type: SolarControlConsole # look ma i AM the computer!
   - type: CommunicationsConsole
     title: comms-console-announcement-title-centcom
@@ -151,6 +165,7 @@
   - type: CrewMonitoringConsole
   - type: GeneralStationRecordConsole
     canDeleteEntries: true
+  - type: CriminalRecordsConsole
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: CrewMonitor
@@ -165,6 +180,7 @@
   - type: SolutionScanner
   - type: IgnoreUIRange
   - type: ShowAntagIcons
+  - type: ShowContrabandDetails
   - type: Inventory
     templateId: aghost
   - type: Loadout

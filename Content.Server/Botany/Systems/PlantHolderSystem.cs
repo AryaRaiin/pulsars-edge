@@ -64,8 +64,11 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Server.Labels.Components;
+using Content.Shared.Administration.Logs;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Database;
+using Content.Shared.Kitchen.Components;
+using Content.Shared.Labels.Components;
 
 namespace Content.Server.Botany.Systems;
 
@@ -239,7 +242,7 @@ public sealed class PlantHolderSystem : EntitySystem
             return;
         }
 
-        if (_tagSystem.HasTag(args.Used, "Hoe"))
+            args.Handled = true;
         {
             args.Handled = true;
             if (component.WeedLevel > 0)
@@ -279,7 +282,7 @@ public sealed class PlantHolderSystem : EntitySystem
             return;
         }
 
-        if (_tagSystem.HasTag(args.Used, "PlantSampleTaker"))
+            args.Handled = true;
         {
             args.Handled = true;
             if (component.Seed == null)
@@ -288,14 +291,14 @@ public sealed class PlantHolderSystem : EntitySystem
                 return;
             }
 
-            // Frontier: prevent sampling unsamplable plants
-            if (component.Seed.PreventClipping)
             {
                 _popup.PopupCursor(Loc.GetString("plant-holder-component-cannot-be-sampled-message"), args.User);
                 return;
             }
             // End Frontier
 
+            if (component.Sampled)
+            {
             if (component.Sampled)
             {
                 _popup.PopupCursor(Loc.GetString("plant-holder-component-already-sampled-message"), args.User);
@@ -734,9 +737,9 @@ public sealed class PlantHolderSystem : EntitySystem
 
         if (component.Harvest && !component.Dead)
         {
-            if (TryComp<HandsComponent>(user, out var hands))
-            {
                 if (!_botany.CanHarvest(component.Seed, hands.ActiveHandEntity))
+            {
+                    _popup.PopupCursor(Loc.GetString("plant-holder-component-ligneous-cant-harvest-message"), user);
                 {
                     _popup.PopupCursor(Loc.GetString("plant-holder-component-ligneous-cant-harvest-message"), user);
                     return false;

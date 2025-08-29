@@ -600,6 +600,10 @@
     - CorgiWearable
     - Hardsuit
     - WhitelistChameleon
+  - type: ClothingGrantComponent
+    component:
+    - type: SupermatterImmune
+  # end imp edits
   - type: ClothingGrantComponent #imp edit
     component:
     - type: SupermatterImmune
@@ -613,6 +617,9 @@
       head: ClothingHeadHelmetHardsuitEngineeringWhite
       helmetcover: ClothingHeadHelmetCoverBlock
       helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: ClothingGrantComponent #imp edit
+    component:
+    - type: SupermatterImmune
 
 #Chief Medical Officer's Hardsuit
 - type: entity

@@ -793,10 +793,6 @@
         layer:
         - WallLayer
         density: 2000
-  - type: RCDDeconstructable #Frontier
-    cost: 6 #Frontier
-    delay: 8 #Frontier
-    fx: EffectRCDDeconstruct8 #Frontier
 
 - type: entity
   parent: WallReinforced

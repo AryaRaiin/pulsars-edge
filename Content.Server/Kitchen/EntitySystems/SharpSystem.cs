@@ -1,4 +1,4 @@
-﻿// SPDX-FileCopyrightText: 2022 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2022 Jacob Tong <10494922+ShadowCommander@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr@gmail.com>
 // SPDX-FileCopyrightText: 2022 KIBORG04 <bossmira4@gmail.com>
@@ -28,6 +28,7 @@
 //
 // SPDX-License-Identifier: MIT
 
+using Content.Server.Body.Systems;
 using Content.Server.Body.Systems;
 using Content.Server.Body.Systems;
 using Content.Server.Kitchen.Components;

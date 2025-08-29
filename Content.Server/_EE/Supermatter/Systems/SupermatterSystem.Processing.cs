@@ -45,6 +45,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Spawners;
 
 namespace Content.Server._EE.Supermatter.Systems;
+
 using Robust.Shared.Maths;
 public sealed partial class SupermatterSystem
 {
