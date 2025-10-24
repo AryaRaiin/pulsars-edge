@@ -11,16 +11,22 @@
 // SPDX-FileCopyrightText: 2024 lzk
 // SPDX-FileCopyrightText: 2024 metalgearsloth
 // SPDX-FileCopyrightText: 2025 Ilya246
+// SPDX-FileCopyrightText: 2025 Dark <darkwindleaf@hotmail.co.uk>
+// SPDX-FileCopyrightText: 2025 Lachryphage (GitHub)
+// SPDX-FileCopyrightText: 2025 V <97265903+formlessnameless@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 hivehum <ketchupfaced@gmail.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using System.Numerics;
 using Content.Server.Beam;
 using Content.Server.Beam.Components;
 using Content.Server.Lightning.Components;
 using Content.Shared.Lightning;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes; // Mono
+using Robust.Shared.Map;
 using Robust.Shared.Random;
 
 namespace Content.Server.Lightning;
@@ -153,4 +159,4 @@ public sealed class LightningSystem : SharedLightningSystem
 /// <param name="Source">The entity that created the lightning</param>
 /// <param name="Target">The entity that was struck by lightning.</param>
 [ByRefEvent]
-public readonly record struct HitByLightningEvent(EntityUid Source, EntityUid Target);
+public readonly record struct HitByLightningEvent(EntityUid? Source, EntityUid Target, bool CanExplode); // imp - added CanExplode

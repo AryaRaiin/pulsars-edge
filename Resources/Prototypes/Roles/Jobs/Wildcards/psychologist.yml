@@ -9,9 +9,16 @@
       time: 10800
   startingGear: PsychologistGear
   icon: "JobIconPsychologist"
-  supervisors: job-supervisors-hire # Frontier
-  accessGroups: # Frontier
-  - GeneralAccess # Frontier
+  supervisors: job-supervisors-cmo
+  access:
+  - Medical
+  - Maintenance
+  extendedAccess:
+  - Chemistry
+  special: # imp
+  - !type:AddComponentSpecial
+    components:
+    - type: SupermatterSoother
 
 - type: startingGear
   id: PsychologistGear

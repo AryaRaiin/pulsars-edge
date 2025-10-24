@@ -65,6 +65,13 @@
   - type: EyeProtection
   - type: IdentityBlocker
     coverage: EYES
+  - type: ClothingGrantComponent # imp
+    component:
+    - type: SupermatterHallucinationImmune
+  - type: Tag
+    tags:
+    - PetWearable
+    - WhitelistChameleon
   - type: StaticPrice # Frontier
     price: 135 # Frontier
 
@@ -126,6 +133,8 @@
     sprite: Clothing/Eyes/Glasses/outlawglasses.rsi
   - type: VisionCorrection
   - type: IdentityBlocker
+  - type: StaticPrice
+    price: 500
 
 - type: entity
   parent: ClothingEyesBase

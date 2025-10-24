@@ -497,6 +497,7 @@
     - MedicalBoardsStatic # Shitmed Change
     - EngineeringBoardsStatic
     - CircuitFloorsStatic
+    - ImpCircuitStatic # Imp | LateStation, added for the port
     - NFScienceBoardsStatic # Frontier
     - NFServiceBoardsStatic # Frontier
     - NFSalvageBoardsStatic # Frontier
