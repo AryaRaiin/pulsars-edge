@@ -20,6 +20,7 @@ using System.Linq;
 using System.Numerics;
 
 namespace Content.Client._EE.Supermatter.Consoles;
+using Robust.Shared.Maths;
 
 [GenerateTypedNameReferences]
 public sealed partial class SupermatterEntryContainer : BoxContainer

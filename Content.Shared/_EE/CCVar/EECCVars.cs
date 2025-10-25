@@ -14,7 +14,6 @@ using Robust.Shared.Configuration;
 namespace Content.Shared._EE.CCVar;
 
 [CVarDefs] // ReSharper disable once InconsistentNaming
-public sealed class EECCVars
 public sealed partial class EECCVars : CVars
 {
     #region Jetpack System
@@ -86,6 +85,7 @@ public sealed partial class EECCVars : CVars
     public static readonly CVarDef<float> MassContestsMaxPercentage =
         CVarDef.Create("ee.contests.max_percentage", 0.25f, CVar.REPLICATED | CVar.SERVER);
 
+    #endregion
     // TODO: Move the rest of the announcer code to _EE
 
     #region Announcers
