@@ -595,7 +595,6 @@
   - type: HeldSpeedModifier
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
     - WhitelistChameleon
   - type: StaminaDamageResistance # Mono - Stamres
@@ -605,7 +604,7 @@
     blockUnequipWhenAttached: false
     replaceCurrentClothing: true
     clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitCap
+      head: ClothingHeadHelmetHardsuitEngineeringWhite
       helmetcover: ClothingHeadHelmetCoverBlock
       helmetattachment: ClothingHeadHelmetAttachmentBlock
   - type: ClothingGrantComponent #imp edit
