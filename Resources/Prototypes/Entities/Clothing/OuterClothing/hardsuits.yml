@@ -593,28 +593,19 @@
     walkModifier: 0.75
     sprintModifier: 0.8
   - type: HeldSpeedModifier
-  - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitEngineeringWhite
   - type: Tag
     tags:
     - CorgiWearable
     - Hardsuit
     - WhitelistChameleon
-  - type: ClothingGrantComponent
-    component:
-    - type: SupermatterImmune
-  # end imp edits
-  - type: ClothingGrantComponent #imp edit
-    component:
-    - type: SupermatterImmune
   - type: StaminaDamageResistance # Mono - Stamres
-    coefficient: 0.45
+    coefficient: 0.3
   - type: ToggleableClothing # Goobstation - Modsuits change - Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
     requiredSlot: outerclothing
     blockUnequipWhenAttached: false
     replaceCurrentClothing: true
     clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitEngineeringWhite
+      head: ClothingHeadHelmetHardsuitCap
       helmetcover: ClothingHeadHelmetCoverBlock
       helmetattachment: ClothingHeadHelmetAttachmentBlock
   - type: ClothingGrantComponent #imp edit

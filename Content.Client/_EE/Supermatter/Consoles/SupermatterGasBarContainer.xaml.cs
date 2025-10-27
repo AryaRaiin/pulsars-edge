@@ -43,6 +43,7 @@ public sealed partial class SupermatterGasBarContainer : BoxContainer
     {
         RobustXamlLoader.Load(this);
 
+
         _config = IoCManager.Resolve<IConfigurationManager>();
         _proto = IoCManager.Resolve<IPrototypeManager>();
         _cache = IoCManager.Resolve<IResourceCache>();
@@ -101,34 +102,48 @@ public sealed partial class SupermatterGasBarContainer : BoxContainer
         var borderOverride = (StyleBoxFlat)GasBarBorder.PanelOverride;
         borderOverride.BackgroundColor = color;
 
-        // Set labels
-        var gasData = SupermatterGasData.GasData[gas];
-
         GasLabel.Text = Loc.GetString(gasProto.Name) + ":";
 
-        var transmitModifier = gasData.TransmitModifier / 5;
-        TransmitInfoLabel.Text = Loc.GetString("supermatter-console-window-label-gas-transmit-bar", ("transmit", transmitModifier.ToString("+0.0;-0.0")));
-        TransmitInfoLabel.FontColorOverride = GetDetailColor(transmitModifier);
+        // Set labels
+        if (SupermatterGasData.GasData.ContainsKey(gas))
+        {
+            SupermatterGasFact gasData = SupermatterGasData.GasData[gas];
+            var transmitModifier = gasData.TransmitModifier / 5;
+            TransmitInfoLabel.Text = Loc.GetString("supermatter-console-window-label-gas-transmit-bar",
+                ("transmit", transmitModifier.ToString("+0.0;-0.0")));
+            TransmitInfoLabel.FontColorOverride = GetDetailColor(transmitModifier);
 
-        var heatPenalty = (gasData.HeatPenalty - 1) * 100;
-        WasteInfoLabel.Text = Loc.GetString("supermatter-console-window-label-gas-waste-bar", ("waste", heatPenalty.ToString("+0;-0")));
-        WasteInfoLabel.FontColorOverride = GetDetailColor(heatPenalty, true);
+            var heatPenalty = (gasData.HeatPenalty - 1) * 100;
+            WasteInfoLabel.Text = Loc.GetString("supermatter-console-window-label-gas-waste-bar",
+                ("waste", heatPenalty.ToString("+0;-0")));
+            WasteInfoLabel.FontColorOverride = GetDetailColor(heatPenalty, true);
 
-        var powerMix = gasData.PowerMixRatio;
-        var tempFactor = powerMix > 0.8 ? 50f : 30f;
-        powerMix = 1f * tempFactor / Atmospherics.T0C * powerMix * _config.GetCVar(CCVars.AtmosTickRate);
-        PowerInfoLabel.Text = Loc.GetString("supermatter-console-window-label-gas-power-bar", ("power", powerMix.ToString("+0.00;-0.00")));
-        PowerInfoLabel.FontColorOverride = GetDetailColor(powerMix);
+            var powerMix = gasData.PowerMixRatio;
+            var tempFactor = powerMix > 0.8 ? 50f : 30f;
+            powerMix = 1f * tempFactor / Atmospherics.T0C * powerMix * _config.GetCVar(CCVars.AtmosTickRate);
+            PowerInfoLabel.Text = Loc.GetString("supermatter-console-window-label-gas-power-bar",
+                ("power", powerMix.ToString("+0.00;-0.00")));
+            PowerInfoLabel.FontColorOverride = GetDetailColor(powerMix);
 
-        var heatResistance = (gasData.HeatResistance - 1) * (Atmospherics.T0C + _config.GetCVar(EECCVars.SupermatterHeatPenaltyThreshold));
-        HeatInfoLabel.Text = Loc.GetString("supermatter-console-window-label-gas-heat-bar", ("heat", heatResistance.ToString("+0.00;-0.00")));
-        HeatInfoLabel.FontColorOverride = GetDetailColor(heatResistance);
+            var heatResistance = (gasData.HeatResistance - 1) *
+                                 (Atmospherics.T0C + _config.GetCVar(EECCVars.SupermatterHeatPenaltyThreshold));
+            HeatInfoLabel.Text = Loc.GetString("supermatter-console-window-label-gas-heat-bar",
+                ("heat", heatResistance.ToString("+0.00;-0.00")));
+            HeatInfoLabel.FontColorOverride = GetDetailColor(heatResistance);
 
-        // Set visibility
-        TransmitContainer.Visible = transmitModifier != 0;
-        WasteContainer.Visible = heatPenalty != 0;
-        PowerContainer.Visible = powerMix != 0;
-        HeatContainer.Visible = heatResistance != 0;
+            // Set visibility
+            TransmitContainer.Visible = transmitModifier != 0;
+            WasteContainer.Visible = heatPenalty != 0;
+            PowerContainer.Visible = powerMix != 0;
+            HeatContainer.Visible = heatResistance != 0;
+        }
+        else
+        {
+            TransmitContainer.Visible = false;
+            WasteContainer.Visible = false;
+            PowerContainer.Visible = false;
+            HeatContainer.Visible = false;
+        }
 
         // On click
         GasButton.OnButtonUp += args =>

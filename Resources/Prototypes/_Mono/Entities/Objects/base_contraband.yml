@@ -42,6 +42,15 @@
   parent: BaseC2ContrabandUnredeemable
   abstract: true
 
+# engineering department contraband
+- type: entity
+  id: BaseEngineeringContraband
+  parent: BaseRestrictedContraband
+  abstract: true
+  components:
+  - type: Contraband
+    allowedDepartments: [ Engineering ]
+
 # civilian department contraband
 - type: entity
   id: BaseCivilianContraband
