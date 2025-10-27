@@ -13,6 +13,9 @@
 //
 // SPDX-License-Identifier: MIT
 
+using Content.Server.Atmos;
+using Content.Server.Atmos.EntitySystems;
+using Content.Server.Body.Components;
 using Content.Server.DoAfter;
 using Content.Server.Explosion.EntitySystems;
 using Content.Server.Nutrition.Components;
